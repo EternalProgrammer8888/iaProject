@@ -1,0 +1,22 @@
+//j'ai ça déjà
+def ligneMotif(caractere: Char, nbEspace: Int, nbRepetitionCaractere: Int): Array[Char]={
+  var ligneArray = Array.fill(2*nbEspace+nbRepetitionCaractere)(' ')
+  for (i<-0 to nbEspace-1){
+    ligneArray(i)=' '
+  }
+  for (i<-nbEspace to (nbEspace+nbRepetitionCaractere-1)){
+    ligneArray(i)=caractere
+  }
+  for (i<-(nbEspace+nbRepetitionCaractere) to (ligneArray.size-1)){
+    ligneArray(i)=' '
+  }
+  return ligneArray
+}
+
+val nbLignes = 7
+val caractere = '*'
+
+for (i<-1 to nbLignes){
+  var ligneArray = ligneMotif(caractere, nbLignes-i, i)
+  println(ligneArray.mkString)
+}
