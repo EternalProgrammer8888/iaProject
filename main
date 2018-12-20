@@ -1,19 +1,27 @@
-//mis à jour 10h54
+//mis à jour 11h00
 
+//fonction qui renvoie un tableau de char contentenant une ligne du motif
 def ligneMotif(caractere: Char, nbEspace: Int, nbRepetitionCaractere: Int): Array[Char]={
   var ligneArray = Array.fill(2*nbEspace+nbRepetitionCaractere)(' ')
+  
+  //remplit le cote gauche de la ligne avec des espaces
   for (i<-0 to nbEspace-1){
     ligneArray(i)=' '
   }
+  
+  //remplit le milieu de la ligne avec la repetition du caractere
   for (i<-nbEspace to (nbEspace+nbRepetitionCaractere-1)){
     ligneArray(i)=caractere
   }
+  
+  //remplit le cote droit de la ligne avec des espaces
   for (i<-(nbEspace+nbRepetitionCaractere) to (ligneArray.size-1)){
     ligneArray(i)=' '
   }
   return ligneArray
 }
 
+//a faire la fonction main qui demande nbLignes et caractere, supprimer les 2 lignes suivantes, mettre les 2 boucles for dans la fonction main
 val nbLignes = 7
 val caractere = '*'
 
@@ -21,7 +29,7 @@ for (i<-1 to nbLignes){
   var ligneArray = ligneMotif(caractere, nbLignes-i, 2*i-1)
   println(ligneArray.mkString)
 }
-for (i<-0 to nbLignes){
-  var ligneArray = ligneMotif(caractere, i, nbLignes-i )
+for (i<-nbLignes to 1 by-1){
+  var ligneArray = ligneMotif(caractere, nbLignes-i, 2*i-1 )
   println(ligneArray.mkString)
 }
