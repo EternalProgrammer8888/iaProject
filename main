@@ -1,3 +1,101 @@
-//mis à jour 11h00
+//mis à jour 11h58
 
-il y a pas de pdf d'exa 2 sur moodle !!
+   import io.StdIn
+  
+
+object BR {
+
+     
+  def dés(): Int ={
+   
+   val resultat1 = math.ceil((math.random *6)).toInt
+   val resultat2 = math.ceil((math.random *6)).toInt
+   
+   val sommeDes = resultat1 + resultat2
+   
+    return sommeDes
+ }
+
+ def quicommence():String ={
+    val random = new scala.util.Random
+    val jrs = Array("joueur1","joueur2")
+    return jrs(random.nextInt(2))
+  }
+  
+  def aquiletour(joueur:String):String={
+     if(joueur == "joueur1"){
+      return "joueur2"
+    }
+    else{
+      return "joueur1"
+    }
+  }
+  
+  def action(): Int ={
+    var lance = 0
+    var total = 0 
+    var rejouer = false
+    
+    do{
+      lance = dés()
+  
+      if(lance!=7){
+   
+        total += lance
+        println("votre lance est "+lance+", le total est"+total)
+        println("voulez vous rejouer ?")
+        rejouer = StdIn.readBoolean
+      }
+   
+      if(lance == 7){
+        println("votre lance est"+lance)
+        println("vousavez perdu")
+        total = 0 
+      }
+  
+    }while(lance != 7 && rejouer == true)
+    println("votre resultat est"+total) 
+    return total
+  }
+  
+  def gagner(resultatJ1:Int,resultatJ2: Int): Unit ={
+    
+    if(resultatJ1 > resultatJ2) println("le joueur 1 à gagné")
+    else{println("le joueur 2 a gagné")    } 
+  }
+  
+  
+  
+  
+  def main(args: Array[String]): Unit = {
+          
+   
+       
+    var joueur = quicommence()
+    println("Le joueur "+joueur+" commence la partie.")
+    var lance = 0
+    var total = 0 
+    var rejouer = false
+    var joueur1 = 0
+    var joueur2 = 0
+
+    total = action()  
+    if(joueur == "joueur1") {joueur1 = total}
+    else if(joueur == "joueur2") {joueur2 = total }
+   
+     // val resultatJ1 = total 
+        
+    joueur = aquiletour(joueur)
+    println("maintenant cest au tour de"+joueur)
+
+    total = action() 
+    if(joueur == "joueur1") {joueur1 = total}
+    else if(joueur == "joueur2") {joueur2 = total }
+ 
+    //val resultatJ2 = total 
+   
+    
+    gagner(joueur1,joueur2)
+}
+  }
+  
