@@ -25,10 +25,13 @@ def ligneMotif(caractere: Char, nbEspace: Int, nbRepetitionCaractere: Int): Arra
 val nbLignes = 7
 val caractere = '*'
 
+//boucle qui affiche la moitie superieure du motif
 for (i<-1 to nbLignes){
   var ligneArray = ligneMotif(caractere, nbLignes-i, 2*i-1)
   println(ligneArray.mkString)
 }
+
+//boucle qui affiche la moitie inferieure du motif
 for (i<-nbLignes to 1 by-1){
   var ligneArray = ligneMotif(caractere, nbLignes-i, 2*i-1 )
   println(ligneArray.mkString)
